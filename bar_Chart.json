@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/vega/vega/master/docs/data/disasters.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": {"type": "bar"},
+  "encoding": {
+    "y": {"field": "Deaths", "title": "Total Deaths", "type": "quantitative"},
+    "x": {"field": "Entity", "title": "Disaster Type", "type": "ordinal"}
+  },
+  "config": {}
+}

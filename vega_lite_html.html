@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Embedding Vega-Lite</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+  </head>
+  <body>
+    <div id="vis"></div>
+    <div id="vis2"></div>
+
+    <script type="text/javascript">
+        var graph1 = {
+            $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
+            description: 'Chart showing Disasters and their life impact',
+            data: {
+                url: 'https://raw.githubusercontent.com/vega/vega/master/docs/data/disasters.csv',
+                format: {
+                type: 'csv'
+                }   
+            },
+            mark: 'bar',
+            encoding: {
+                y: {
+                    field: 'Deaths',
+                    title: 'Total Deaths',
+                    type: 'quantitative'
+                },
+                x: {
+                    field: 'Entity',
+                    title: 'Disaster Type',
+                    type: 'ordinal'
+                }
+            }
+        };
+        var graph2 = {
+            $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
+            description: 'Chart showing deaths over time and mapped per their corresponding natural disaster.',
+            data: {
+                url: "https://raw.githubusercontent.com/vega/vega/master/docs/data/disasters.csv",
+                format: {
+                type: "csv"
+                }
+            },
+            mark: {
+                type: "line"
+            },
+            encoding: {
+                x: {
+                    field: "Year",
+                    title: "Year",
+                    type: "quantitative",
+                    scale: {"domain": [1900,2020]} 
+                },
+                y: {
+                    field: "Deaths",
+                    title: "Disaster Type",
+                    type: "quantitative",
+                    scale: {"domain": [0,4000000]} 
+
+                },
+                color: {
+                    field: "Entity",
+                    type: "nominal"
+                }
+            }
+        };
+        vegaEmbed('#vis', graph1);
+        vegaEmbed('#vis2', graph2);
+    </script>
+  </body>
+</html>

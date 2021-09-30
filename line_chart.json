@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/vega/vega/master/docs/data/disasters.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": {"type": "line"},
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "title": "Year",
+      "type": "quantitative",
+      "scale": {"domain": [1900, 2020]}
+    },
+    "y": {
+      "field": "Deaths",
+      "title": "Disaster Type",
+      "type": "quantitative",
+      "scale": {"domain": [0, 4000000]}
+    },
+    "color": {"field": "Entity", "type": "nominal"}
+  },
+  "config": {}
+}
